@@ -1,0 +1,2226 @@
+/* =========================================================
+   DAYBERRY
+   Main Stylesheet
+   Public Birthday Submission Page
+========================================================= */
+
+
+/* =========================================================
+   1. ROOT VARIABLES
+========================================================= */
+
+:root {
+
+    /* -------------------------
+       Brand Colors
+    ------------------------- */
+
+    --cream: #FFF9F0;
+
+    --white: #FFFFFF;
+
+    --strawberry: #FF4D6D;
+
+    --ribbon-pink: #FB6F92;
+
+    --blush: #FFE5EC;
+
+    --soft-peach: #FFF1E8;
+
+    --deep-red: #B60E3D;
+
+
+    /* -------------------------
+       Text Colors
+    ------------------------- */
+
+    --text: #2B2022;
+
+    --muted-text: #745F63;
+
+
+    /* -------------------------
+       Borders
+    ------------------------- */
+
+    --border: #E8C7CC;
+
+
+    /* -------------------------
+       Shadows
+    ------------------------- */
+
+    --shadow:
+        0 20px 60px rgba(255, 77, 109, 0.12);
+
+    --card-shadow:
+        0 24px 70px rgba(43, 32, 34, 0.14);
+
+    --button-shadow:
+        0 10px 24px rgba(255, 77, 109, 0.22);
+
+
+    /* -------------------------
+       Transitions
+    ------------------------- */
+
+    --transition-fast:
+        0.2s ease;
+
+    --transition-medium:
+        0.35s ease;
+
+}
+
+
+/* =========================================================
+   2. RESET
+========================================================= */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+}
+
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    min-height: 100vh;
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    color: var(--text);
+
+    background-color: var(--cream);
+
+    overflow-x: hidden;
+
+}
+
+
+button,
+input,
+textarea,
+select {
+
+    font-family: inherit;
+
+}
+
+
+button {
+
+    cursor: pointer;
+
+}
+
+
+a {
+
+    color: inherit;
+
+    text-decoration: none;
+
+}
+
+
+img {
+
+    max-width: 100%;
+
+    display: block;
+
+}
+
+
+fieldset {
+
+    border: none;
+
+}
+
+
+textarea {
+
+    resize: vertical;
+
+}
+
+
+/* =========================================================
+   3. ACCESSIBILITY HELPERS
+========================================================= */
+
+.sr-only {
+
+    position: absolute;
+
+    width: 1px;
+
+    height: 1px;
+
+    padding: 0;
+
+    margin: -1px;
+
+    overflow: hidden;
+
+    clip: rect(0, 0, 0, 0);
+
+    white-space: nowrap;
+
+    border: 0;
+
+}
+
+
+/* =========================================================
+   4. BACKGROUND IMAGE LAYERS
+========================================================= */
+
+.background-layer {
+
+    position: fixed;
+
+    inset: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    z-index: -3;
+
+    background-position: center;
+
+    background-size: cover;
+
+    background-repeat: no-repeat;
+
+    transition:
+        opacity 1.5s ease-in-out;
+
+    pointer-events: none;
+
+}
+
+
+/* First image layer */
+
+#bg-layer-1 {
+
+    opacity: 1;
+
+}
+
+
+/* Second image layer */
+
+#bg-layer-2 {
+
+    opacity: 0;
+
+}
+
+
+/* =========================================================
+   5. BACKGROUND OVERLAY
+========================================================= */
+
+.background-overlay {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: -2;
+
+    pointer-events: none;
+
+    background:
+
+        linear-gradient(180deg,
+            rgba(255, 249, 240, 0.74),
+            rgba(255, 249, 240, 0.86));
+
+}
+
+
+/* =========================================================
+   6. PAGE WRAPPER
+========================================================= */
+
+.page-wrapper {
+
+    position: relative;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+/* =========================================================
+   7. HEADER / NAVIGATION
+========================================================= */
+
+.site-header {
+
+    width: 100%;
+
+    padding:
+        28px clamp(24px, 6vw, 80px);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    position: relative;
+
+    z-index: 20;
+
+}
+
+
+/* =========================================================
+   8. BRAND
+========================================================= */
+
+.brand {
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+.brand-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+}
+
+
+.brand-name {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(32px, 4vw, 46px);
+
+    font-weight: 600;
+
+    color:
+        var(--strawberry);
+
+    letter-spacing:
+        -1.5px;
+
+    transition:
+        transform var(--transition-fast);
+
+}
+
+
+.brand-link:hover .brand-name {
+
+    transform:
+        translateY(-2px);
+
+}
+
+
+/* =========================================================
+   9. NAVIGATION
+========================================================= */
+
+.main-navigation {
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+.home-link {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        11px 22px;
+
+    border:
+        1px solid rgba(255, 77, 109, 0.22);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(255, 255, 255, 0.58);
+
+    color:
+        var(--text);
+
+    font-size:
+        14px;
+
+    font-weight:
+        600;
+
+    backdrop-filter:
+        blur(12px);
+
+    transition:
+        all var(--transition-fast);
+
+}
+
+
+.home-link:hover {
+
+    color:
+        var(--strawberry);
+
+    background:
+        rgba(255, 255, 255, 0.85);
+
+    border-color:
+        var(--strawberry);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(255, 77, 109, 0.12);
+
+}
+
+
+/* =========================================================
+   10. HERO SECTION
+========================================================= */
+
+.hero-section {
+
+    width: 100%;
+
+    padding:
+        60px 24px 45px;
+
+    display: flex;
+
+    justify-content: center;
+
+    text-align: center;
+
+}
+
+
+.hero-content {
+
+    width: 100%;
+
+    max-width:
+        760px;
+
+}
+
+
+.eyebrow {
+
+    margin-bottom:
+        16px;
+
+    color:
+        var(--strawberry);
+
+    font-size:
+        12px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.16em;
+
+    text-transform:
+        uppercase;
+
+}
+
+
+.hero-content h1 {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(48px, 7vw, 88px);
+
+    line-height:
+        1.04;
+
+    font-weight:
+        500;
+
+    letter-spacing:
+        -2px;
+
+    color:
+        var(--text);
+
+}
+
+
+.hero-content h1 span {
+
+    display: inline-block;
+
+    color:
+        var(--strawberry);
+
+    font-style:
+        italic;
+
+}
+
+
+.hero-description {
+
+    max-width:
+        580px;
+
+    margin:
+        24px auto 0;
+
+    color:
+        var(--muted-text);
+
+    font-size:
+        16px;
+
+    line-height:
+        1.7;
+
+}
+
+
+/* =========================================================
+   11. BIRTHDAY SECTION
+========================================================= */
+
+.birthday-section {
+
+    width: 100%;
+
+    padding:
+        20px 24px 80px;
+
+    display: flex;
+
+    justify-content: center;
+
+}
+
+
+.birthday-card {
+
+    width: 100%;
+
+    max-width:
+        620px;
+
+    padding:
+        clamp(30px, 6vw, 58px);
+
+    position: relative;
+
+    background:
+        rgba(255, 255, 255, 0.78);
+
+    border:
+        1px solid rgba(255, 255, 255, 0.85);
+
+    border-radius:
+        34px;
+
+    box-shadow:
+        var(--card-shadow);
+
+    backdrop-filter:
+        blur(20px);
+
+    -webkit-backdrop-filter:
+        blur(20px);
+
+    transform:
+        perspective(1000px) rotateX(0deg) rotateY(0deg);
+
+    transition:
+        transform 0.15s ease-out;
+
+}
+
+
+/* =========================================================
+   12. FORM CONTENT
+========================================================= */
+
+.form-content {
+
+    width: 100%;
+
+}
+
+
+.form-header {
+
+    text-align:
+        center;
+
+    margin-bottom:
+        36px;
+
+}
+
+
+.form-icon {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width:
+        64px;
+
+    height:
+        64px;
+
+    margin:
+        0 auto 20px;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--blush);
+
+    font-size:
+        30px;
+
+    box-shadow:
+        0 10px 24px rgba(255, 77, 109, 0.10);
+
+}
+
+
+.form-header h2 {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(32px, 5vw, 46px);
+
+    line-height:
+        1.12;
+
+    font-weight:
+        500;
+
+    letter-spacing:
+        -1px;
+
+    color:
+        var(--text);
+
+}
+
+
+.form-header p {
+
+    margin:
+        14px auto 0;
+
+    max-width:
+        430px;
+
+    color:
+        var(--muted-text);
+
+    font-size:
+        15px;
+
+    line-height:
+        1.65;
+
+}
+
+
+/* =========================================================
+   13. FORM
+========================================================= */
+
+.login-form,
+#birthday-form {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        22px;
+
+}
+
+
+.form-group {
+
+    display:
+        flex;
+
+    flex-direction:
+        column;
+
+    gap:
+        8px;
+
+}
+
+
+.form-label {
+
+    color:
+        var(--text);
+
+    font-size:
+        13px;
+
+    font-weight:
+        700;
+
+    letter-spacing:
+        0.02em;
+
+}
+
+
+.optional {
+
+    color:
+        var(--muted-text);
+
+    font-weight:
+        500;
+
+}
+
+
+/* =========================================================
+   14. LABEL ROW
+========================================================= */
+
+.label-row {
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        space-between;
+
+    gap:
+        12px;
+
+}
+
+
+.character-count {
+
+    color:
+        var(--muted-text);
+
+    font-size:
+        12px;
+
+    font-weight:
+        600;
+
+}
+
+
+/* =========================================================
+   15. FORM INPUTS
+========================================================= */
+
+.form-input {
+
+    width:
+        100%;
+
+    min-height:
+        54px;
+
+    padding:
+        14px 16px;
+
+    border:
+        1px solid var(--border);
+
+    border-radius:
+        16px;
+
+    outline:
+        none;
+
+    background:
+        rgba(255, 249, 240, 0.66);
+
+    color:
+        var(--text);
+
+    font-size:
+        15px;
+
+    transition:
+        border-color var(--transition-fast),
+        box-shadow var(--transition-fast),
+        background var(--transition-fast);
+
+}
+
+
+.form-input::placeholder {
+
+    color:
+        rgba(116, 95, 99, 0.52);
+
+}
+
+
+.form-input:hover {
+
+    border-color:
+        rgba(255, 77, 109, 0.42);
+
+}
+
+
+.form-input:focus {
+
+    border-color:
+        var(--strawberry);
+
+    background:
+        var(--white);
+
+    box-shadow:
+        0 0 0 4px rgba(255, 77, 109, 0.10);
+
+}
+
+
+/* =========================================================
+   16. SELECT ELEMENTS
+========================================================= */
+
+.birthday-selects {
+
+    display:
+        grid;
+
+    grid-template-columns:
+        1.5fr 1fr;
+
+    gap:
+        12px;
+
+}
+
+
+.select-wrapper {
+
+    width:
+        100%;
+
+}
+
+
+select.form-input {
+
+    appearance:
+        none;
+
+    -webkit-appearance:
+        none;
+
+    background-image:
+
+        linear-gradient(45deg,
+            transparent 50%,
+            var(--muted-text) 50%),
+
+        linear-gradient(135deg,
+            var(--muted-text) 50%,
+            transparent 50%);
+
+    background-position:
+
+        calc(100% - 20px) 23px,
+
+        calc(100% - 14px) 23px;
+
+    background-size:
+
+        6px 6px,
+
+        6px 6px;
+
+    background-repeat:
+        no-repeat;
+
+    cursor:
+        pointer;
+
+}
+
+
+/* =========================================================
+   17. TEXTAREA
+========================================================= */
+
+.textarea-input {
+
+    min-height:
+        120px;
+
+    line-height:
+        1.6;
+
+}
+
+
+/* =========================================================
+   18. SUBMIT BUTTON
+========================================================= */
+
+.submit-button {
+
+    width:
+        100%;
+
+    min-height:
+        56px;
+
+    padding:
+        14px 22px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    gap:
+        10px;
+
+    border:
+        none;
+
+    border-radius:
+        18px;
+
+    background:
+
+        linear-gradient(135deg,
+            var(--strawberry),
+            var(--ribbon-pink));
+
+    color:
+        var(--white);
+
+    font-size:
+        15px;
+
+    font-weight:
+        700;
+
+    box-shadow:
+        var(--button-shadow);
+
+    transition:
+        transform var(--transition-fast),
+        box-shadow var(--transition-fast),
+        opacity var(--transition-fast);
+
+}
+
+
+.submit-button:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 14px 30px rgba(255, 77, 109, 0.28);
+
+}
+
+
+.submit-button:active {
+
+    transform:
+        scale(0.97);
+
+}
+
+
+.submit-button:focus-visible {
+
+    outline:
+        3px solid rgba(255, 77, 109, 0.30);
+
+    outline-offset:
+        4px;
+
+}
+
+
+/* =========================================================
+   19. PRIVACY NOTE
+========================================================= */
+
+.privacy-note {
+
+    margin-top:
+        20px;
+
+    text-align:
+        center;
+
+    color:
+        rgba(116, 95, 99, 0.72);
+
+    font-size:
+        12px;
+
+    line-height:
+        1.5;
+
+}
+
+
+/* =========================================================
+   20. FIELD VALIDATION
+========================================================= */
+
+.field-error-message {
+
+    display:
+        none;
+
+    color:
+        var(--deep-red);
+
+    font-size:
+        12px;
+
+    line-height:
+        1.4;
+
+}
+
+
+.field-error-message.visible {
+
+    display:
+        block;
+
+}
+
+
+.form-input.field-error {
+
+    border-color:
+        var(--deep-red);
+
+    box-shadow:
+        0 0 0 4px rgba(182, 14, 61, 0.08);
+
+}
+
+
+select.field-error {
+
+    border-color:
+        var(--deep-red);
+
+}
+
+
+/* =========================================================
+   21. SUCCESS SCREEN
+========================================================= */
+
+.success-screen {
+
+    display:
+        none;
+
+    text-align:
+        center;
+
+}
+
+
+.success-screen.visible {
+
+    display:
+        block;
+
+}
+
+
+.success-screen[aria-hidden="false"] {
+
+    display:
+        block;
+
+}
+
+
+.success-icon {
+
+    width:
+        78px;
+
+    height:
+        78px;
+
+    margin:
+        0 auto 24px;
+
+    display:
+        flex;
+
+    align-items:
+        center;
+
+    justify-content:
+        center;
+
+    border-radius:
+        50%;
+
+    background:
+        var(--blush);
+
+    font-size:
+        38px;
+
+    animation:
+        successPop 0.5s cubic-bezier(0.34,
+            1.56,
+            0.64,
+            1);
+
+}
+
+
+.success-screen h2 {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(34px, 5vw, 48px);
+
+    font-weight:
+        500;
+
+    color:
+        var(--text);
+
+}
+
+
+.success-screen p {
+
+    max-width:
+        420px;
+
+    margin:
+        14px auto 30px;
+
+    color:
+        var(--muted-text);
+
+    font-size:
+        15px;
+
+    line-height:
+        1.7;
+
+}
+
+
+/* =========================================================
+   22. SUCCESS ANIMATION
+========================================================= */
+
+@keyframes successPop {
+
+    0% {
+
+        opacity:
+            0;
+
+        transform:
+            scale(0.6);
+
+    }
+
+    100% {
+
+        opacity:
+            1;
+
+        transform:
+            scale(1);
+
+    }
+
+}
+
+
+/* =========================================================
+   23. FOOTER
+========================================================= */
+
+.site-footer {
+
+    width:
+        100%;
+
+    padding:
+        0 24px 36px;
+
+    text-align:
+        center;
+
+}
+
+
+.site-footer p {
+
+    color:
+        rgba(116, 95, 99, 0.65);
+
+    font-size:
+        12px;
+
+    line-height:
+        1.5;
+
+}
+
+
+/* =========================================================
+   24. FORM LOADING STATE
+========================================================= */
+
+.submit-button.loading {
+
+    pointer-events:
+        none;
+
+    opacity:
+        0.75;
+
+}
+
+
+.submit-button.loading::after {
+
+    content:
+        "";
+
+    width:
+        17px;
+
+    height:
+        17px;
+
+    border:
+        2px solid rgba(255, 255, 255, 0.4);
+
+    border-top-color:
+        var(--white);
+
+    border-radius:
+        50%;
+
+    animation:
+        buttonSpin 0.7s linear infinite;
+
+}
+
+
+@keyframes buttonSpin {
+
+    to {
+
+        transform:
+            rotate(360deg);
+
+    }
+
+}
+
+
+/* =========================================================
+   25. RESPONSIVE TABLET
+========================================================= */
+
+@media (max-width: 800px) {
+
+    .site-header {
+
+        padding:
+            24px;
+
+    }
+
+
+    .hero-section {
+
+        padding:
+            45px 20px 35px;
+
+    }
+
+
+    .birthday-section {
+
+        padding:
+            15px 20px 60px;
+
+    }
+
+
+    .birthday-card {
+
+        border-radius:
+            28px;
+
+    }
+
+}
+
+
+/* =========================================================
+   26. RESPONSIVE MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+    .site-header {
+
+        padding:
+            20px;
+
+    }
+
+
+    .brand-name {
+
+        font-size:
+            36px;
+
+    }
+
+
+    .home-link {
+
+        padding:
+            9px 17px;
+
+        font-size:
+            13px;
+
+    }
+
+
+    .hero-section {
+
+        padding:
+            40px 20px 30px;
+
+    }
+
+
+    .hero-content h1 {
+
+        font-size:
+            48px;
+
+        letter-spacing:
+            -1.5px;
+
+    }
+
+
+    .hero-description {
+
+        font-size:
+            14px;
+
+    }
+
+
+    .birthday-section {
+
+        padding:
+            15px 16px 50px;
+
+    }
+
+
+    .birthday-card {
+
+        padding:
+            30px 22px;
+
+        border-radius:
+            24px;
+
+    }
+
+
+    .birthday-selects {
+
+        grid-template-columns:
+            1fr;
+
+    }
+
+
+    .form-header h2 {
+
+        font-size:
+            34px;
+
+    }
+
+
+    .form-header p {
+
+        font-size:
+            14px;
+
+    }
+
+
+    .submit-button {
+
+        min-height:
+            54px;
+
+    }
+
+}
+
+
+/* =========================================================
+   27. SMALL MOBILE
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .site-header {
+
+        padding:
+            18px;
+
+    }
+
+
+    .brand-name {
+
+        font-size:
+            32px;
+
+    }
+
+
+    .home-link {
+
+        padding:
+            8px 14px;
+
+    }
+
+
+    .hero-content h1 {
+
+        font-size:
+            42px;
+
+    }
+
+
+    .birthday-card {
+
+        padding:
+            26px 18px;
+
+    }
+
+
+    .form-header h2 {
+
+        font-size:
+            30px;
+
+    }
+
+}
+
+
+/* =========================================================
+   28. REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+
+        scroll-behavior:
+            auto;
+
+    }
+
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration:
+            0.01ms !important;
+
+        animation-iteration-count:
+            1 !important;
+
+        transition-duration:
+            0.01ms !important;
+
+    }
+
+}
+
+/* =========================================================
+   CALENDAR PAGE
+========================================================= */
+
+.calendar-page {
+
+    min-height: 100vh;
+
+    background:
+        radial-gradient(circle at top left,
+            rgba(255, 226, 232, .8),
+            transparent 28%),
+
+        radial-gradient(circle at bottom right,
+            rgba(255, 240, 234, .9),
+            transparent 30%);
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.calendar-hero {
+
+    display: grid;
+
+    grid-template-columns: 1.2fr .8fr;
+
+    gap: 48px;
+
+    align-items: center;
+
+    padding: 48px;
+
+    margin-bottom: 42px;
+
+}
+
+
+.calendar-hero-text small {
+
+    display: block;
+
+    font-size: .85rem;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    color: var(--strawberry);
+
+    margin-bottom: 12px;
+
+}
+
+
+.calendar-hero-text h2 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 4rem;
+
+    line-height: 1;
+
+    margin-bottom: 22px;
+
+    color: var(--espresso);
+
+}
+
+
+.calendar-hero-text p {
+
+    font-size: 1.1rem;
+
+    line-height: 1.8;
+
+    max-width: 520px;
+
+    color: var(--text-secondary);
+
+}
+
+
+.calendar-hero-icon {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+.calendar-hero-icon span {
+
+    font-size: 120px;
+
+    color: var(--strawberry);
+
+    opacity: .9;
+
+}
+
+/* =========================================================
+   CALENDAR INFO CARDS
+========================================================= */
+
+.calendar-summary {
+
+    display: grid;
+
+    grid-template-columns:
+
+        repeat(2, minmax(280px, 1fr));
+
+    gap: 28px;
+
+    margin-bottom: 40px;
+
+}
+
+
+.calendar-card {
+
+    background: rgba(255, 255, 255, .65);
+
+    backdrop-filter: blur(16px);
+
+    border-radius: 28px;
+
+    padding: 30px;
+
+    border: 1px solid rgba(255, 255, 255, .7);
+
+    box-shadow:
+
+        0 15px 40px rgba(255, 110, 140, .08);
+
+}
+
+
+.calendar-card small {
+
+    display: block;
+
+    text-transform: uppercase;
+
+    letter-spacing: 2px;
+
+    color: var(--strawberry);
+
+    margin-bottom: 12px;
+
+}
+
+
+.calendar-card h3 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 2rem;
+
+    margin-bottom: 10px;
+
+}
+
+
+.calendar-card p {
+
+    color: var(--text-secondary);
+
+}
+
+/* =========================================================
+   MONTH NAVIGATION
+========================================================= */
+
+.calendar-navigation {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 32px;
+
+}
+
+
+.month-title {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 2.4rem;
+
+}
+
+
+.month-button {
+
+    width: 52px;
+
+    height: 52px;
+
+    border: none;
+
+    border-radius: 18px;
+
+    background: white;
+
+    cursor: pointer;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    transition: .25s;
+
+    box-shadow:
+
+        0 8px 25px rgba(255, 110, 140, .08);
+
+}
+
+
+.month-button:hover {
+
+    transform: translateY(-4px);
+
+    background: var(--strawberry);
+
+    color: white;
+
+}
+
+/* =========================================================
+   CALENDAR CONTAINER
+========================================================= */
+
+.calendar-wrapper {
+
+    background: white;
+
+    border-radius: 34px;
+
+    padding: 40px;
+
+    box-shadow:
+
+        0 25px 60px rgba(255, 110, 140, .08);
+
+}
+
+.calendar-weekdays {
+
+    display: grid;
+
+    grid-template-columns: repeat(7, 1fr);
+
+    gap: 12px;
+
+    margin-bottom: 18px;
+
+}
+
+
+.calendar-weekdays div {
+
+    text-align: center;
+
+    font-weight: 700;
+
+    color: var(--text-secondary);
+
+}
+
+.calendar-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(7, 1fr);
+
+    gap: 14px;
+
+}
+
+/* =========================================================
+   CALENDAR DAY CELLS
+========================================================= */
+
+.calendar-day {
+
+    position: relative;
+
+    min-height: 120px;
+
+    padding: 14px;
+
+    border-radius: 24px;
+
+    background: #ffffff;
+
+    border: 1px solid rgba(255, 220, 225, .9);
+
+    transition:
+
+        transform .25s ease,
+
+        box-shadow .25s ease,
+
+        border-color .25s ease;
+
+    cursor: pointer;
+
+    overflow: hidden;
+
+}
+
+
+.calendar-day:hover {
+
+    transform: translateY(-6px);
+
+    box-shadow:
+
+        0 18px 35px rgba(255, 110, 140, .12);
+
+    border-color: rgba(255, 120, 150, .4);
+
+}
+
+
+.calendar-day.empty {
+
+    background: transparent;
+
+    border: none;
+
+    box-shadow: none;
+
+    cursor: default;
+
+}
+
+
+.calendar-day.empty:hover {
+
+    transform: none;
+
+}
+
+.calendar-day-number {
+
+    font-weight: 700;
+
+    font-size: 1rem;
+
+    color: var(--espresso);
+
+    margin-bottom: 10px;
+
+}
+
+.calendar-day.today {
+
+    border: 2px solid var(--strawberry);
+
+    box-shadow:
+
+        0 0 0 5px rgba(255, 90, 120, .08);
+
+}
+
+
+.calendar-day.today .calendar-day-number {
+
+    color: var(--strawberry);
+
+}
+
+.calendar-day.selected {
+
+    background:
+
+        linear-gradient(145deg,
+
+            #fff5f7,
+
+            #ffffff);
+
+    border: 2px solid var(--strawberry);
+
+}
+
+/* =========================================================
+   BIRTHDAY DOTS
+========================================================= */
+
+.birthday-indicators {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin-top: 18px;
+
+    flex-wrap: wrap;
+
+}
+
+.birthday-cake {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-top: 16px;
+
+    font-size: 3.5rem;
+
+    animation:
+        cakeFloat 2.8s ease-in-out infinite;
+
+}
+
+@keyframes cakeFloat {
+
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+
+}
+
+.calendar-day:hover .birthday-cake {
+
+    transform:
+        scale(1.35) rotate(-10deg);
+
+}
+
+.calendar-birthday {
+
+    margin-top: 8px;
+
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    background: #ffe8ed;
+
+    color: var(--strawberry);
+
+    font-size: .78rem;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+}
+
+.calendar-day.has-today-birthday {
+
+    background:
+
+        linear-gradient(145deg,
+
+            #fff4f6,
+
+            #fffdfd);
+
+}
+
+.calendar-strawberry {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    margin-top: 18px;
+
+    font-size: 1.5rem;
+
+    opacity: .28;
+
+    transition: .3s;
+
+}
+
+/* =========================================================
+   SELECTED DAY PANEL
+========================================================= */
+
+.day-details {
+
+    margin-top: 35px;
+
+    background: white;
+
+    border-radius: 28px;
+
+    padding: 28px;
+
+    box-shadow:
+
+        0 15px 35px rgba(255, 120, 150, .08);
+
+}
+
+
+.day-details h3 {
+
+    font-family: "Playfair Display", serif;
+
+    font-size: 2rem;
+
+    margin-bottom: 16px;
+
+}
+
+
+.day-details p {
+
+    color: var(--text-secondary);
+
+}
+
+.day-birthday {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-top: 18px;
+
+    padding: 16px;
+
+    border-radius: 18px;
+
+    background: #fff8f9;
+
+}
+
+
+.day-avatar {
+
+    width: 52px;
+
+    height: 52px;
+
+    border-radius: 50%;
+
+    object-fit: cover;
+
+    background: #ffdce4;
+
+}
+
+
+.day-name {
+
+    font-weight: 700;
+
+    font-size: 1rem;
+
+}
+
+
+.day-relation {
+
+    color: var(--text-secondary);
+
+    font-size: .9rem;
+
+}
+
+/* =========================================================
+   RESPONSIVE
+========================================================= */
+
+@media(max-width:900px) {
+
+    .calendar-hero {
+
+        grid-template-columns: 1fr;
+
+        text-align: center;
+
+    }
+
+    .calendar-summary {
+
+        grid-template-columns: 1fr;
+
+    }
+
+    .calendar-day {
+
+        min-height: 90px;
+
+        padding: 10px;
+
+    }
+
+}
+
+
+@media(max-width:650px) {
+
+    .calendar-grid {
+
+        gap: 8px;
+
+    }
+
+    .calendar-day {
+
+        min-height: 70px;
+
+        padding: 8px;
+
+        border-radius: 18px;
+
+    }
+
+    .calendar-day-number {
+
+        font-size: .9rem;
+
+    }
+
+    .calendar-birthday {
+
+        display: none;
+
+    }
+
+}

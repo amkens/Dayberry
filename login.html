@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dayberry | Welcome Back</title>
+
+    <!-- ============================================
+         GOOGLE FONTS
+    ============================================= -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+        rel="stylesheet">
+
+
+    <!-- ============================================
+         SUPABASE
+    ============================================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <!-- ============================================
+         MATERIAL SYMBOLS
+    ============================================= -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1" rel="stylesheet">
+
+
+    <style>
+        /* =================================================
+           ROOT VARIABLES
+        ================================================= */
+
+        :root {
+
+            --cream: #FFF9F0;
+
+            --white: #FFFFFF;
+
+            --strawberry: #FF4D6D;
+
+            --ribbon-pink: #FB6F92;
+
+            --blush: #FFE5EC;
+
+            --deep-red: #B60E3D;
+
+            --text: #2B2022;
+
+            --muted-text: #745F63;
+
+            --border: #E8C7CC;
+
+            --shadow:
+                0 20px 60px rgba(255, 77, 109, 0.12);
+
+        }
+
+
+        /* =================================================
+           RESET
+        ================================================= */
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+        /* =================================================
+           BODY
+        ================================================= */
+
+        body {
+
+            min-height: 100vh;
+
+            font-family:
+                "DM Sans",
+                sans-serif;
+
+            color:
+                var(--text);
+
+            background-color:
+                var(--cream);
+
+            background-image:
+                radial-gradient(var(--blush) 0.7px,
+                    transparent 0.7px);
+
+            background-size:
+                26px 26px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 24px;
+
+            overflow-x: hidden;
+
+        }
+
+
+        /* =================================================
+           FORM ELEMENTS
+        ================================================= */
+
+        button,
+        input {
+
+            font-family:
+                inherit;
+
+        }
+
+
+        /* =================================================
+           DECORATIVE BACKGROUND
+        ================================================= */
+
+        .background-decoration {
+
+            position: fixed;
+
+            width: 260px;
+
+            height: 260px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(circle,
+                    rgba(255, 77, 109, 0.14),
+                    transparent 70%);
+
+            pointer-events: none;
+
+        }
+
+
+        .decoration-one {
+
+            top: -100px;
+
+            left: -80px;
+
+        }
+
+
+        .decoration-two {
+
+            bottom: -100px;
+
+            right: -80px;
+
+        }
+
+
+        /* =================================================
+           MAIN AUTH CONTAINER
+        ================================================= */
+
+        .auth-container {
+
+            position: relative;
+
+            width: 100%;
+
+            max-width: 1050px;
+
+            min-height: 650px;
+
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr;
+
+            background:
+                rgba(255, 255, 255, 0.72);
+
+            backdrop-filter:
+                blur(20px);
+
+            -webkit-backdrop-filter:
+                blur(20px);
+
+            border:
+                1px solid rgba(255, 255, 255, 0.8);
+
+            border-radius:
+                36px;
+
+            box-shadow:
+                var(--shadow);
+
+            overflow: hidden;
+
+        }
+
+
+        /* =================================================
+           BRAND PANEL
+        ================================================= */
+
+        .brand-panel {
+
+            position: relative;
+
+            padding: 64px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: space-between;
+
+            background:
+                linear-gradient(145deg,
+                    #FFE5EC 0%,
+                    #FFF1E8 55%,
+                    #FFF9F0 100%);
+
+            overflow: hidden;
+
+        }
+
+
+        .brand-panel::before {
+
+            content: "";
+
+            position: absolute;
+
+            width: 280px;
+
+            height: 280px;
+
+            right: -100px;
+
+            top: -100px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(255, 77, 109, 0.12);
+
+        }
+
+
+        .brand-panel::after {
+
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+
+            height: 180px;
+
+            left: -70px;
+
+            bottom: -60px;
+
+            border-radius: 50%;
+
+            background:
+                rgba(251, 111, 146, 0.12);
+
+        }
+
+
+        /* =================================================
+           BRAND LOGO
+        ================================================= */
+
+        .brand-logo {
+
+            position: relative;
+
+            z-index: 2;
+
+        }
+
+
+        .brand-name {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                52px;
+
+            font-weight:
+                600;
+
+            color:
+                var(--strawberry);
+
+            letter-spacing:
+                -2px;
+
+        }
+
+
+        .brand-tagline {
+
+            margin-top:
+                6px;
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                19px;
+
+            font-style:
+                italic;
+
+            color:
+                var(--muted-text);
+
+        }
+
+
+        /* =================================================
+           BRAND MESSAGE
+        ================================================= */
+
+        .brand-message {
+
+            position: relative;
+
+            z-index: 2;
+
+            max-width:
+                400px;
+
+        }
+
+
+        .brand-message h1 {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                52px;
+
+            line-height:
+                1.08;
+
+            font-weight:
+                500;
+
+            letter-spacing:
+                -1px;
+
+            margin-bottom:
+                20px;
+
+        }
+
+
+        .brand-message h1 span {
+
+            color:
+                var(--strawberry);
+
+            font-style:
+                italic;
+
+        }
+
+
+        .brand-message p {
+
+            font-size:
+                16px;
+
+            line-height:
+                1.7;
+
+            color:
+                var(--muted-text);
+
+            max-width:
+                360px;
+
+        }
+
+
+        /* =================================================
+           DECORATIVE STRAWBERRY
+        ================================================= */
+
+        .strawberry-decoration {
+
+            position: absolute;
+
+            right:
+                45px;
+
+            bottom:
+                50px;
+
+            font-size:
+                90px;
+
+            opacity:
+                0.75;
+
+            transform:
+                rotate(-12deg);
+
+            filter:
+                drop-shadow(0 8px 12px rgba(255, 77, 109, 0.15));
+
+            user-select:
+                none;
+
+        }
+
+
+        /* =================================================
+           LOGIN PANEL
+        ================================================= */
+
+        .login-panel {
+
+            padding:
+                64px;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            justify-content:
+                center;
+
+            background:
+                rgba(255, 255, 255, 0.76);
+
+        }
+
+
+        .login-header {
+
+            margin-bottom:
+                36px;
+
+        }
+
+
+        .login-header h2 {
+
+            font-family:
+                "Playfair Display",
+                serif;
+
+            font-size:
+                38px;
+
+            font-weight:
+                500;
+
+            margin-bottom:
+                10px;
+
+        }
+
+
+        .login-header p {
+
+            color:
+                var(--muted-text);
+
+            font-size:
+                15px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        /* =================================================
+           LOGIN FORM
+        ================================================= */
+
+        .login-form {
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            gap:
+                20px;
+
+        }
+
+
+        .form-group {
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            gap:
+                8px;
+
+        }
+
+
+        .form-label {
+
+            font-size:
+                13px;
+
+            font-weight:
+                700;
+
+            color:
+                var(--text);
+
+            letter-spacing:
+                0.02em;
+
+        }
+
+
+        .input-wrapper {
+
+            position:
+                relative;
+
+        }
+
+
+        .input-wrapper .material-symbols-outlined {
+
+            position:
+                absolute;
+
+            left:
+                16px;
+
+            top:
+                50%;
+
+            transform:
+                translateY(-50%);
+
+            color:
+                var(--muted-text);
+
+            font-size:
+                21px;
+
+            pointer-events:
+                none;
+
+        }
+
+
+        .form-input {
+
+            width:
+                100%;
+
+            height:
+                54px;
+
+            padding:
+                0 50px 0 48px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius:
+                16px;
+
+            background:
+                rgba(255, 249, 240, 0.65);
+
+            outline:
+                none;
+
+            font-size:
+                15px;
+
+            color:
+                var(--text);
+
+            transition:
+                0.2s ease;
+
+        }
+
+
+        .form-input::placeholder {
+
+            color:
+                rgba(116, 95, 99, 0.5);
+
+        }
+
+
+        .form-input:focus {
+
+            border-color:
+                var(--strawberry);
+
+            box-shadow:
+                0 0 0 4px rgba(255, 77, 109, 0.10);
+
+            background:
+                var(--white);
+
+        }
+
+
+        /* =================================================
+           PASSWORD TOGGLE
+        ================================================= */
+
+        .password-toggle {
+
+            position:
+                absolute;
+
+            right:
+                14px;
+
+            top:
+                50%;
+
+            transform:
+                translateY(-50%);
+
+            border:
+                none;
+
+            background:
+                transparent;
+
+            color:
+                var(--muted-text);
+
+            cursor:
+                pointer;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+        }
+
+
+        .password-toggle:hover {
+
+            color:
+                var(--strawberry);
+
+        }
+
+
+        /* =================================================
+           FORM OPTIONS
+        ================================================= */
+
+        .form-options {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            margin-top:
+                -4px;
+
+        }
+
+
+        .remember-me {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                8px;
+
+            font-size:
+                13px;
+
+            color:
+                var(--muted-text);
+
+            cursor:
+                pointer;
+
+        }
+
+
+        .remember-me input {
+
+            accent-color:
+                var(--strawberry);
+
+            width:
+                16px;
+
+            height:
+                16px;
+
+            cursor:
+                pointer;
+
+        }
+
+
+        .forgot-password {
+
+            color:
+                var(--strawberry);
+
+            font-size:
+                13px;
+
+            font-weight:
+                700;
+
+            text-decoration:
+                none;
+
+        }
+
+
+        .forgot-password:hover {
+
+            text-decoration:
+                underline;
+
+        }
+
+
+        /* =================================================
+           LOGIN BUTTON
+        ================================================= */
+
+        .login-button {
+
+            width:
+                100%;
+
+            height:
+                56px;
+
+            border:
+                none;
+
+            border-radius:
+                18px;
+
+            background:
+                linear-gradient(135deg,
+                    var(--strawberry),
+                    var(--ribbon-pink));
+
+            color:
+                white;
+
+            font-size:
+                15px;
+
+            font-weight:
+                700;
+
+            cursor:
+                pointer;
+
+            box-shadow:
+                0 10px 24px rgba(255, 77, 109, 0.22);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                opacity 0.2s ease;
+
+        }
+
+
+        .login-button:hover {
+
+            transform:
+                translateY(-2px);
+
+            box-shadow:
+                0 14px 30px rgba(255, 77, 109, 0.28);
+
+        }
+
+
+        .login-button:active {
+
+            transform:
+                scale(0.97);
+
+        }
+
+
+        .login-button:disabled {
+
+            cursor:
+                not-allowed;
+
+            opacity:
+                0.7;
+
+            transform:
+                none;
+
+        }
+
+
+        /* =================================================
+           STATUS MESSAGE
+        ================================================= */
+
+        .status-message {
+
+            display:
+                none;
+
+            margin-top:
+                18px;
+
+            padding:
+                12px 16px;
+
+            border-radius:
+                12px;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.5;
+
+        }
+
+
+        .status-message.show {
+
+            display:
+                block;
+
+        }
+
+
+        .status-message.error {
+
+            background:
+                #FFE5EC;
+
+            color:
+                var(--deep-red);
+
+        }
+
+
+        .status-message.success {
+
+            background:
+                #E9F8EF;
+
+            color:
+                #23643A;
+
+        }
+
+
+        .status-message.loading {
+
+            background:
+                #FFF1E8;
+
+            color:
+                var(--muted-text);
+
+        }
+
+
+        /* =================================================
+           DIVIDER
+        ================================================= */
+
+        .divider {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap:
+                14px;
+
+            margin:
+                28px 0;
+
+        }
+
+
+        .divider::before,
+        .divider::after {
+
+            content:
+                "";
+
+            height:
+                1px;
+
+            flex:
+                1;
+
+            background:
+                var(--border);
+
+        }
+
+
+        .divider span {
+
+            font-size:
+                12px;
+
+            color:
+                var(--muted-text);
+
+        }
+
+
+        /* =================================================
+           PRIVATE ACCESS MESSAGE
+        ================================================= */
+
+        .private-access {
+
+            text-align:
+                center;
+
+            font-size:
+                13px;
+
+            line-height:
+                1.6;
+
+            color:
+                var(--muted-text);
+
+        }
+
+
+        .private-access strong {
+
+            color:
+                var(--strawberry);
+
+            font-weight:
+                700;
+
+        }
+
+
+        /* =================================================
+           RESPONSIVE
+        ================================================= */
+
+        @media (max-width: 800px) {
+
+            body {
+
+                padding:
+                    16px;
+
+            }
+
+
+            .auth-container {
+
+                grid-template-columns:
+                    1fr;
+
+                min-height:
+                    auto;
+
+                max-width:
+                    520px;
+
+            }
+
+
+            .brand-panel {
+
+                padding:
+                    42px 32px;
+
+                min-height:
+                    380px;
+
+            }
+
+
+            .brand-name {
+
+                font-size:
+                    42px;
+
+            }
+
+
+            .brand-message h1 {
+
+                font-size:
+                    38px;
+
+            }
+
+
+            .strawberry-decoration {
+
+                font-size:
+                    65px;
+
+                right:
+                    30px;
+
+                bottom:
+                    30px;
+
+            }
+
+
+            .login-panel {
+
+                padding:
+                    42px 32px;
+
+            }
+
+        }
+
+
+        @media (max-width: 420px) {
+
+            .brand-panel,
+            .login-panel {
+
+                padding:
+                    32px 24px;
+
+            }
+
+
+            .brand-message h1 {
+
+                font-size:
+                    34px;
+
+            }
+
+
+            .login-header h2 {
+
+                font-size:
+                    32px;
+
+            }
+
+
+            .form-options {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    flex-start;
+
+                gap:
+                    12px;
+
+            }
+
+        }
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ============================================
+         DECORATIVE BACKGROUND
+    ============================================= -->
+
+    <div class="background-decoration decoration-one">
+    </div>
+
+    <div class="background-decoration decoration-two">
+    </div>
+
+
+    <!-- ============================================
+         MAIN AUTHENTICATION CONTAINER
+    ============================================= -->
+
+    <main class="auth-container">
+
+
+        <!-- ============================================
+             BRAND PANEL
+        ============================================= -->
+
+        <section class="brand-panel">
+
+
+            <!-- Brand -->
+
+            <div class="brand-logo">
+
+                <div class="brand-name">
+                    Dayberry
+                </div>
+
+                <div class="brand-tagline">
+                    Your little garden of memories.
+                </div>
+
+            </div>
+
+
+            <!-- Welcome Message -->
+
+            <div class="brand-message">
+
+                <h1>
+
+                    Welcome back to
+                    <span>your garden.</span>
+
+                </h1>
+
+
+                <p>
+
+                    Keep the people you love close,
+                    remember their special days,
+                    and never let a beautiful moment
+                    slip through the cracks.
+
+                </p>
+
+            </div>
+
+
+            <!-- Decorative Strawberry -->
+
+            <div class="strawberry-decoration" aria-hidden="true">
+
+                🍓
+
+            </div>
+
+
+        </section>
+
+
+        <!-- ============================================
+             LOGIN PANEL
+        ============================================= -->
+
+        <section class="login-panel">
+
+
+            <!-- Login Header -->
+
+            <div class="login-header">
+
+                <h2>
+                    Sign in
+                </h2>
+
+                <p>
+
+                    Enter your details to continue
+                    to your Dayberry garden.
+
+                </p>
+
+            </div>
+
+
+            <!-- ============================================
+                 LOGIN FORM
+            ============================================= -->
+
+            <form class="login-form" id="loginForm">
+
+
+                <!-- Email -->
+
+                <div class="form-group">
+
+
+                    <label class="form-label" for="email">
+
+                        Email address
+
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+
+                        <span class="material-symbols-outlined" aria-hidden="true">
+
+                            mail
+
+                        </span>
+
+
+                        <input class="form-input" type="email" id="email" name="email" placeholder="you@example.com"
+                            autocomplete="email" required>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- Password -->
+
+                <div class="form-group">
+
+
+                    <label class="form-label" for="password">
+
+                        Password
+
+                    </label>
+
+
+                    <div class="input-wrapper">
+
+
+                        <span class="material-symbols-outlined" aria-hidden="true">
+
+                            lock
+
+                        </span>
+
+
+                        <input class="form-input" type="password" id="password" name="password"
+                            placeholder="Enter your password" autocomplete="current-password" required>
+
+
+                        <button type="button" class="password-toggle" id="passwordToggle" aria-label="Show password">
+
+
+                            <span class="material-symbols-outlined">
+
+                                visibility
+
+                            </span>
+
+
+                        </button>
+
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- ============================================
+                     FORM OPTIONS
+                ============================================= -->
+
+                <div class="form-options">
+
+
+                    <label class="remember-me">
+
+
+                        <input type="checkbox" id="rememberMe">
+
+
+                        <span>
+                            Remember me
+                        </span>
+
+
+                    </label>
+
+
+                    <a href="#" class="forgot-password" id="forgotPassword">
+
+                        Forgot password?
+
+                    </a>
+
+
+                </div>
+
+
+                <!-- ============================================
+                     LOGIN BUTTON
+                ============================================= -->
+
+                <button type="submit" class="login-button" id="loginButton">
+
+                    Sign in to Dayberry
+
+                </button>
+
+
+            </form>
+
+
+            <!-- ============================================
+                 STATUS MESSAGE
+            ============================================= -->
+
+            <div class="status-message" id="statusMessage" role="status" aria-live="polite">
+
+            </div>
+
+
+            <!-- ============================================
+                 DIVIDER
+            ============================================= -->
+
+            <div class="divider">
+
+                <span>
+                    Private creator access
+                </span>
+
+            </div>
+
+
+            <!-- ============================================
+                 PRIVATE ACCESS MESSAGE
+            ============================================= -->
+
+            <div class="private-access">
+
+                This garden is reserved for
+                <strong>Dayberry's creator.</strong>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+    <!-- ============================================
+         PASSWORD VISIBILITY TOGGLE
+    ============================================= -->
+
+    <script>
+
+        const passwordInput =
+            document.getElementById("password");
+
+        const passwordToggle =
+            document.getElementById("passwordToggle");
+
+
+        passwordToggle.addEventListener(
+            "click",
+            () => {
+
+
+                const isPassword =
+                    passwordInput.type === "password";
+
+
+                passwordInput.type =
+                    isPassword
+                        ? "text"
+                        : "password";
+
+
+                passwordToggle
+                    .querySelector(
+                        ".material-symbols-outlined"
+                    )
+                    .textContent =
+                    isPassword
+                        ? "visibility_off"
+                        : "visibility";
+
+
+                passwordToggle.setAttribute(
+                    "aria-label",
+                    isPassword
+                        ? "Hide password"
+                        : "Show password"
+                );
+
+
+            }
+        );
+
+    </script>
+
+
+    <!-- ============================================
+         AUTHENTICATION LOGIC
+         
+         Supabase login is handled by:
+         js/auth.js
+    ============================================= -->
+
+    <script src="js/auth.js"></script>
+
+
+</body>
+
+</html>

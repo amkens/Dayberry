@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- =========================================
+         BASIC DOCUMENT SETUP
+    ========================================== -->
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dayberry | Your Little Garden of Memories</title>
+
+
+    <!-- =========================================
+         GOOGLE FONTS
+    ========================================== -->
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+        rel="stylesheet">
+
+
+    <!-- =========================================
+         MATERIAL SYMBOLS
+    ========================================== -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@0..1" rel="stylesheet">
+
+
+    <!-- =========================================
+         MAIN STYLESHEET
+    ========================================== -->
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         BACKGROUND IMAGE LAYERS
+         
+         These layers are used by index.js
+         for the rotating background images.
+    ========================================== -->
+
+    <div id="bg-layer-1" class="background-layer opacity-100" aria-hidden="true"></div>
+
+    <div id="bg-layer-2" class="background-layer opacity-0" aria-hidden="true"></div>
+
+
+    <!-- =========================================
+         BACKGROUND OVERLAY
+         
+         Helps maintain readability over
+         changing background images.
+    ========================================== -->
+
+    <div class="background-overlay" aria-hidden="true"></div>
+
+
+    <!-- =========================================
+         MAIN PAGE
+    ========================================== -->
+
+    <main class="page-wrapper">
+
+
+        <!-- =====================================
+             TOP NAVIGATION
+        ====================================== -->
+
+        <header class="site-header">
+
+            <div class="brand">
+
+                <a href="index.html" class="brand-link" aria-label="Dayberry home">
+
+                    <span class="brand-name">
+                        Dayberry
+                    </span>
+
+                </a>
+
+            </div>
+
+
+            <!-- =================================
+                 PRIVATE CREATOR AREA
+
+                 IMPORTANT:
+
+                 This does NOT directly open
+                 overview.html.
+
+                 It first takes the creator
+                 to login.html.
+
+                 Authentication will decide
+                 whether the person can continue.
+            ================================== -->
+
+            <nav class="main-navigation" aria-label="Main navigation">
+
+                <a href="login.html" class="home-link">
+
+                    <span>
+                        Home
+                    </span>
+
+                </a>
+
+            </nav>
+
+        </header>
+
+
+        <!-- =====================================
+             HERO / INTRODUCTION
+        ====================================== -->
+
+        <section class="hero-section" aria-labelledby="page-title">
+
+            <div class="hero-content">
+
+                <p class="eyebrow">
+                    A little place for the people I love
+                </p>
+
+
+                <h1 id="page-title">
+
+                    Keep their
+                    <span>special days</span>
+                    close.
+
+                </h1>
+
+
+                <p class="hero-description">
+
+                    Add a birthday to the garden
+                    and keep a little reminder
+                    of the people who make
+                    my world brighter.
+
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             BIRTHDAY FORM CARD
+        ====================================== -->
+
+        <section class="birthday-section" aria-labelledby="form-title">
+
+
+            <!-- =================================
+                 MAIN BIRTHDAY CARD
+            ================================== -->
+
+            <div class="birthday-card" id="birthday-card">
+
+
+                <!-- =================================
+                     FORM CONTENT
+
+                     This section is hidden after
+                     successful submission.
+                ================================== -->
+
+                <div id="form-content" class="form-content">
+
+
+                    <!-- =============================
+                         FORM HEADER
+                    ============================== -->
+
+                    <div class="form-header">
+
+                        <span class="form-icon" aria-hidden="true">
+                            🍓
+                        </span>
+
+
+                        <h2 id="form-title">
+
+                            Plant a birthday
+                            in the garden.
+
+                        </h2>
+
+
+                        <p>
+
+                           I want to remember your special day
+
+                        </p>
+
+                    </div>
+
+
+                    <!-- =================================
+                         BIRTHDAY FORM
+
+                         IMPORTANT:
+
+                         The form does not directly
+                         save anything here.
+
+                         js/index.js will handle
+                         validation and Supabase
+                         submission.
+                    ================================== -->
+
+                    <form id="birthdayForm" novalidate>
+
+
+                        <!-- =============================
+                             NAME
+                        ============================== -->
+
+                        <div class="form-group">
+
+                            <label for="name" class="form-label">
+
+                                Your name
+
+                            </label>
+
+
+                            <input type="text" id="name" name="name" class="form-input" placeholder="e.g. Amélie"
+                                autocomplete="name" maxlength="100">
+
+
+                            <p id="name-error" class="field-error-message" role="alert">
+
+                                Please enter Your name.
+
+                            </p>
+
+                        </div>
+
+
+                        <!-- =============================
+                             BIRTHDAY
+                        ============================== -->
+
+                        <fieldset class="form-group">
+
+                            <legend class="form-label">
+
+                                Your birthday
+
+                            </legend>
+
+
+                            <div class="birthday-selects">
+
+
+                                <!-- MONTH -->
+
+                                <div class="select-wrapper">
+
+                                    <label for="month" class="sr-only">
+
+                                        Month
+
+                                    </label>
+
+
+                                    <select id="month" name="month" class="form-input">
+
+                                        <option value="">
+                                            Month
+                                        </option>
+
+                                        <option value="01">
+                                            January
+                                        </option>
+
+                                        <option value="02">
+                                            February
+                                        </option>
+
+                                        <option value="03">
+                                            March
+                                        </option>
+
+                                        <option value="04">
+                                            April
+                                        </option>
+
+                                        <option value="05">
+                                            May
+                                        </option>
+
+                                        <option value="06">
+                                            June
+                                        </option>
+
+                                        <option value="07">
+                                            July
+                                        </option>
+
+                                        <option value="08">
+                                            August
+                                        </option>
+
+                                        <option value="09">
+                                            September
+                                        </option>
+
+                                        <option value="10">
+                                            October
+                                        </option>
+
+                                        <option value="11">
+                                            November
+                                        </option>
+
+                                        <option value="12">
+                                            December
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                                <!-- DAY -->
+
+                                <div class="select-wrapper">
+
+                                    <label for="day" class="sr-only">
+
+                                        Day
+
+                                    </label>
+
+
+                                    <select id="day" name="day" class="form-input">
+
+                                        <option value="">
+                                            Day
+                                        </option>
+
+                                    </select>
+
+                                </div>
+
+
+                            </div>
+
+
+                            <p id="birthday-error" class="field-error-message" role="alert">
+
+                                Please select your birthday.
+
+                            </p>
+
+                        </fieldset>
+
+
+                        <!-- =============================
+                             PERSONAL NOTE
+                        ============================== -->
+
+                        <div class="form-group">
+
+                            <div class="label-row">
+
+                                <label for="note" class="form-label">
+
+                                    A little note
+                                    <span class="optional">
+                                        (optional)
+                                    </span>
+
+                                </label>
+
+
+                                <span id="character-count" class="character-count">
+
+                                    0 / 250
+
+                                </span>
+
+                            </div>
+
+
+                            <textarea id="note" name="note" class="form-input textarea-input"
+                                placeholder="A little something you'd like me to remember..." maxlength="250"
+                                rows="4"></textarea>
+
+                        </div>
+
+
+                        <!-- =============================
+                             SUBMIT BUTTON
+                        ============================== -->
+
+                        <button type="submit" class="submit-button">
+
+                            <span>
+                                Add to the garden
+                            </span>
+
+                            <span class="material-symbols-outlined" aria-hidden="true">
+                                arrow_forward
+                            </span>
+
+                        </button>
+
+
+                    </form>
+
+
+                    <!-- =============================
+                         PRIVACY NOTE
+                    ============================== -->
+
+                    <p class="privacy-note">
+
+                        Your little memory is kept
+                        safely in the Dayberry garden.
+
+                    </p>
+
+
+                </div>
+
+
+                <!-- =================================
+                     SUCCESS SCREEN
+
+                     Hidden by default.
+
+                     Shown by index.js after
+                     successful submission.
+                ================================== -->
+
+                <div id="success-screen" class="success-screen" aria-live="polite" aria-hidden="true">
+
+
+                    <div class="success-icon" aria-hidden="true">
+
+                        🍓
+
+                    </div>
+
+
+                    <h2>
+
+                        It's in the garden! 🌷
+
+                    </h2>
+
+
+                    <p>
+
+                        Their special day has been
+                        safely planted in Dayberry.
+
+                    </p>
+
+
+                    <button type="button" id="done-button" class="submit-button">
+
+                        <span>
+                            Add another
+                        </span>
+
+                        <span class="material-symbols-outlined" aria-hidden="true">
+                            add
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             FOOTER
+        ====================================== -->
+
+        <footer class="site-footer">
+
+            <p>
+
+                Made with a little love
+                for the people who matter.
+
+            </p>
+
+        </footer>
+
+
+    </main>
+
+
+    <!-- =========================================
+         INDEX PAGE JAVASCRIPT
+         
+         IMPORTANT:
+
+         All public birthday-form logic
+         lives inside this file.
+
+         This includes:
+
+         - Background rotation
+         - Day selector
+         - Character counter
+         - Form validation
+         - Supabase submission
+         - Success state
+         - Card tilt
+    ========================================== -->
+
+    <!-- =========================================
+         SUPABASE
+    ========================================== -->
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
+    <!-- =========================================
+         INDEX PAGE JAVASCRIPT
+    ========================================== -->
+
+    <script type="module" src="js/index.js"></script>
+
+
+</body>
+
+</html>
